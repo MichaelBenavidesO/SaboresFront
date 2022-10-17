@@ -1,0 +1,61 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Shipping Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Motivo" formControlName="motivo">
+              <mat-option *ngFor="let motivo of motivos" [value]="motivo.name">
+                {{ motivo.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['motivo'].hasError('required')">
+              El motivo es <strong>obligatorio.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Sede" formControlName="sede">
+              <mat-option *ngFor="let sede of sedes" [value]="sede.name">
+                {{ sede.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['sede'].hasError('required')">
+              La sede es <strong>oblogatoria.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Fecha" type="date" formControlName="fecha">
+            <mat-error *ngIf="addressForm.controls['fecha'].hasError('required')">
+             La fecha es <strong>obligatoria.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Hora" type="time" formControlName="hora">
+            <mat-error *ngIf="addressForm.controls['hora'].hasError('required')">
+             La hora es <strong>obligatoria.</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['hora'].hasError('min') || addressForm.controls['hora'].hasError('max') ">
+              El horario permitido es de <strong>12 p.m. a 6 p.m.</strong>
+             </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button style="color: #af2c22;" type="submit">Realizar reserva</button>
+      <button mat-raised-button style="color: #af2c22;" type="button">Realizar reserva con platos</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
