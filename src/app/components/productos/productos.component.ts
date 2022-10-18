@@ -1,9 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { ApiService } from 'src/app/services/api.service';
+import { ModalTemplateService } from 'src/app/services/modal-template.service';
+import Swal from 'sweetalert2';
+import { ModalTemplateComponent } from '../modal-template/modal-template.component';
 
 
 @Component({
@@ -13,7 +17,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProductosComponent implements OnInit{
   dataSource: MatTableDataSource<any>;
-  constructor(public api:ApiService) {
+  constructor(public api:ApiService,public modalservice: ModalTemplateService,public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<any>;
   }
 
@@ -43,6 +47,7 @@ export class ProductosComponent implements OnInit{
     for(let column in data[0]){
       this.displayedColumns.push(column)
     }
+    this.displayedColumns.push("Acciones")
   }
 
   applyFilter(event: Event) {
@@ -52,5 +57,43 @@ export class ProductosComponent implements OnInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDialog(element){
+
+
+    this.modalservice.titulo="producto",
+    this.modalservice.accion="Editar",
+    this.modalservice.element=element,
+    this.dialog.open(ModalTemplateComponent,{
+      width:'auto',
+      height:'auto'
+
+    });
+  }
+
+  eliminar(element){
+    Swal.fire({
+      title: '¿Estás seguro de eliminar el producto?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'Cancelar'
+   }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.delete("Productoes",element.id)
+        window.location.reload()
+      }
+    })
+  }
+  agregarProducto(){
+    this.modalservice.titulo="producto",
+    this.modalservice.accion="Agregar",
+    this.dialog.open(ModalTemplateComponent,{
+      width:'auto',
+      height:'auto'
+
+    });
   }
 }

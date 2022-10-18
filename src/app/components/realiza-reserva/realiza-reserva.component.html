@@ -1,10 +1,28 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>Shipping Information</mat-card-title>
+      <mat-card-title>Realizar reserva</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input  matInput placeholder="Identificacion" formControlName="identificacion" readonly="" [ngModel]=identificacion>
 
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Cantidad de personas" formControlName="cantidad" >
+            <mat-error *ngIf="addressForm.controls['cantidad'].hasError('required')">
+              La cantidad de personas es <strong>obligatoria.</strong>
+             </mat-error>
+             <mat-error *ngIf="addressForm.controls['cantidad'].hasError('min') || addressForm.controls['cantidad'].hasError('max') ">
+               La cantidad permitida es de<strong> 1 a 8 personas</strong>
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
@@ -21,12 +39,12 @@
         <div class="col">
           <mat-form-field class="full-width">
             <mat-select placeholder="Sede" formControlName="sede">
-              <mat-option *ngFor="let sede of sedes" [value]="sede.name">
-                {{ sede.name }}
+              <mat-option *ngFor="let sede of sedes" [value]="sede[0].idSede">
+                {{ sede[0].nombreSede +' - ' +sede[0].direccion }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="addressForm.controls['sede'].hasError('required')">
-              La sede es <strong>oblogatoria.</strong>
+              La sede es <strong>obligatoria.</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -54,8 +72,8 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button style="color: #af2c22;" type="submit">Realizar reserva</button>
-      <button mat-raised-button style="color: #af2c22;" type="button">Realizar reserva con platos</button>
+      <button mat-raised-button style="color: #af2c22;" type="submit" [disabled]="!addressForm.valid">Realizar reserva</button>
+      <button mat-raised-button style="color: #af2c22;" type="button" [disabled]="!addressForm.valid">Realizar reserva con platos</button>
     </mat-card-actions>
   </mat-card>
 </form>

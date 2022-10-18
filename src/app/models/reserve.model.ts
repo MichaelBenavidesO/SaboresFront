@@ -1,7 +1,6 @@
 import { Time } from "@angular/common";
 
-export interface reserva
-{
+export interface Reserva{
 idUsuario: number;
 idSede: number;
 fechaReserva:Date;

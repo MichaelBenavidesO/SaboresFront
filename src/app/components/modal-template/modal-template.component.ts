@@ -11,9 +11,11 @@ export class ModalTemplateComponent implements OnInit {
   constructor(public modalservice: ModalTemplateService) { }
 titulo="";
 accion="";
+element="";
   ngOnInit(): void {
-this.titulo=this.modalservice.titulo,
-this.accion=this.modalservice.accion
+    this.titulo=this.modalservice.titulo,
+    this.accion=this.modalservice.accion,
+    this.element=this.modalservice.element
   }
 
 }

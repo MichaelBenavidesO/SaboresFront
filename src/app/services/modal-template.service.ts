@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class ModalTemplateService {
  titulo="";
  accion="";
+element:"";
   constructor() { }
 
- 
+
 }

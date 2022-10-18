@@ -1,19 +1,36 @@
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Reserva } from 'src/app/models/reserve.model';
+import { UsuarioLogin } from 'src/app/modelsView/UsuarioLoginMV.model';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-realiza-reserva',
   templateUrl: './realiza-reserva.component.html',
   styleUrls: ['./realiza-reserva.component.scss']
 })
-export class RealizaReservaComponent {
+export class RealizaReservaComponent implements OnInit {
+  user:UsuarioLogin;
+  identificacion: number;
+  sedes = [];
+  ngOnInit():void{
+    this.get()
+  }
+
+  public async get(){
+    await this.api.getAll("Sedes").then((res)=>{
+      for (let index = 0; index < res.length; index++) {
+        this.sedes.push([res[index]])
+      }
+    });
+    console.log(this.sedes)
+  }
+
   addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
+    identificacion: [null, Validators.required],
+    cantidad: [null, Validators.compose([
+      Validators.required, Validators.min(1), Validators.max(8)])
+    ],
     sede: [null, Validators.required],
     motivo: [null, Validators.required],
     hora: [null, Validators.compose([
@@ -21,18 +38,7 @@ export class RealizaReservaComponent {
     ],
     fecha: [null, Validators.required],
 
-    shipping: ['free', Validators.required]
   });
-
-  hasUnitNumber = false;
-
-  sedes = [
-    {name: null},
-    {name: 'Cra 24 # 73-09 3 pisos'},
-    {name: 'Calle 44 # 54-52 aire libre'},
-    {name: 'Calle 44 # 59-74 gourmet'},
-    {name: 'Av Jiménez # 8A-12'}
-  ];
 
   motivos = [
     {name: null},
@@ -42,9 +48,23 @@ export class RealizaReservaComponent {
     {name: 'Boda'}
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,public api:ApiService) {
+    this.user= JSON.parse(localStorage.getItem("Usuario"))
+    this.identificacion=this.user.documentoIdentidad;
+  }
 
   onSubmit(): void {
-    alert('Thanks!');
+
+    const reserva:Reserva={
+      idUsuario: this.user.idUsuario,
+      idSede: this.addressForm.get('sede')?.value,
+      fechaReserva:this.addressForm.get('fecha')?.value,
+      cantidadPersonas: this.addressForm.get('cantidad')?.value,
+      evento: this.addressForm.get('motivo')?.value,
+      hora: this.addressForm.get('hora')?.value,
+      activo: true
+    }
+    console.log(reserva)
+    this.api.post("Reservas",reserva)
   }
 }

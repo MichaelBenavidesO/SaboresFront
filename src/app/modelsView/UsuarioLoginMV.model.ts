@@ -1,5 +1,6 @@
 export interface UsuarioLogin
 {
+    idUsuario:number,
     documentoIdentidad: number,
     correoElectronico: string,
     contrasena: string,

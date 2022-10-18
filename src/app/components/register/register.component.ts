@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Usuarios } from 'src/app/models/user.module';
+import { Usuarios } from 'src/app/models/user.model';
 import { ApiService } from 'src/app/services/api.service';
 import Swal from 'sweetalert2';
 
@@ -26,7 +26,7 @@ export class RegisterComponent {
 
 
   onSubmit(): void {
-    this.service.getAll("Usuarios");
+
      const usuario:Usuarios={
        nombre: this.addressForm.get('nombres')?.value,
        apellido: this.addressForm.get('apellidos')?.value,

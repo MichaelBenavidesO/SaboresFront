@@ -35,8 +35,8 @@ export class ApiService {
     return DataResponse;
   }
 
-  update(controller:string,body:string) {
-    return this.http.put(body,this.url+controller).subscribe((res)=>
+  update(controller:string,obj:object,id:number) {
+    return this.http.put(this.url+controller+"/"+id,obj).subscribe((res)=>
     console.log(res))
   }
 

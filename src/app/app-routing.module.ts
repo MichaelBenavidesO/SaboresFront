@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AgregaProductoComponent } from './components/agrega-producto/agrega-producto.component';
+import { AgregaProductoComponent } from './components/forms/agrega-producto/agrega-producto.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/forms/login/login.component';
 import { ModificaUsuarioComponent } from './components/forms/modifica-usuario/modifica-usuario.component';

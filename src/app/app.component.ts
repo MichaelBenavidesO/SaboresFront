@@ -9,18 +9,16 @@ import { LoginService } from './services/login.service';
 export class AppComponent implements OnInit {
   Login:string='';
 
-
   ngOnInit(): void {
 
-
-    console.log(this.loginservice.user);
+    console.log(this.loginservice.login);
     if(this.loginservice.user!=null){
     this.loginservice.login.next('login')
   }else{
     this.loginservice.login.next('logout')
     this.loginservice.user.next(null);
   }
-   this.loginservice.login.subscribe((value=>{
+    this.loginservice.login.subscribe((value=>{
     this.Login=value;
     console.log(this.Login);
 
@@ -31,6 +29,7 @@ export class AppComponent implements OnInit {
 
 
   constructor(public loginservice:LoginService){
+
   }
 
 

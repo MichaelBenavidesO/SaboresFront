@@ -24,13 +24,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { RealizaReservaComponent } from './components/realiza-reserva/realiza-reserva.component';
 import { RealizaPreguntaComponent } from './components/realiza-pregunta/realiza-pregunta.component';
 import { ModificaUsuarioComponent } from './components/forms/modifica-usuario/modifica-usuario.component';
-import { AgregaProductoComponent } from './components/agrega-producto/agrega-producto.component';
+import { AgregaProductoComponent } from './components/forms/agrega-producto/agrega-producto.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalTemplateComponent } from './components/modal-template/modal-template.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditarProductoComponent } from './components/forms/editar-producto/editar-producto.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AgregaProductoComponent,
     ProductosComponent,
     ModalTemplateComponent,
+    EditarProductoComponent,
   ],
   imports: [
     MatFormFieldModule,
