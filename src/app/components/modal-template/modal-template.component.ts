@@ -14,7 +14,7 @@ accion="";
 element="";
   ngOnInit(): void {
     this.titulo=this.modalservice.titulo,
-    this.accion=this.modalservice.accion,
+    this.accion=this.modalservice.accion.value,
     this.element=this.modalservice.element
   }
 

@@ -3,17 +3,20 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>
+      <img style="width: 150px;" src="../../../assets//imgs/Logo.png" alt="Logo Sabores">
+
+    </mat-toolbar>
     <mat-nav-list>
       <!--<a mat-list-item href="/Registro">Registro</a>-->
       <!--<a mat-list-item href="/Ingreso">Ingreso</a>-->
       <a mat-list-item href="/ResumenRestaurante">Resumen</a>
       <a mat-list-item href="/RealizaReserva">Realizar reserva</a>
-      <a mat-list-item href="/RealizaPregunta">Realizar pregunta</a>
+      <a mat-list-item href="/RealizaPregunta">Preguntas</a>
       <a mat-list-item href="/ModificaUsuario">Modifica usuario</a>
       <a mat-list-item href="/RegistroVenta">Registra venta</a>
-      <a mat-list-item href="/AgregaProducto">Agregar producto</a>
-      <a mat-list-item href="/ModificaProducto">Modifica producto</a>
+      <!--<a mat-list-item href="/AgregaProducto">Agregar producto</a>-->
+      <a mat-list-item href="/ModificaProducto">Productos</a>
       <button mat-raised-button
       style="color: #af2c22;"
       (click)="logout()">
@@ -33,7 +36,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span style="color: white;">Sabores</span>
+      <span style="color: white;">Bienvenido {{nombre}}</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

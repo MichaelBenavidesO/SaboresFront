@@ -22,7 +22,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { RealizaReservaComponent } from './components/realiza-reserva/realiza-reserva.component';
-import { RealizaPreguntaComponent } from './components/realiza-pregunta/realiza-pregunta.component';
+import { RealizaPreguntaComponent } from './components/forms/realiza-pregunta/realiza-pregunta.component';
 import { ModificaUsuarioComponent } from './components/forms/modifica-usuario/modifica-usuario.component';
 import { AgregaProductoComponent } from './components/forms/agrega-producto/agrega-producto.component';
 import { ProductosComponent } from './components/productos/productos.component';
@@ -32,6 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalTemplateComponent } from './components/modal-template/modal-template.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditarProductoComponent } from './components/forms/editar-producto/editar-producto.component';
+import { MatSortModule } from '@angular/material/sort';
+import { PreguntasComponent } from './components/preguntas/preguntas.component';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { EditarProductoComponent } from './components/forms/editar-producto/edit
     ProductosComponent,
     ModalTemplateComponent,
     EditarProductoComponent,
+    PreguntasComponent,
   ],
   imports: [
     MatFormFieldModule,
@@ -70,7 +73,9 @@ import { EditarProductoComponent } from './components/forms/editar-producto/edit
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSortModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product.model';
 import { UsuarioLogin } from '../modelsView/UsuarioLoginMV.model';
 
 @Injectable({
@@ -35,8 +36,8 @@ export class ApiService {
     return DataResponse;
   }
 
-  update(controller:string,obj:object,id:number) {
-    return this.http.put(this.url+controller+"/"+id,obj).subscribe((res)=>
+  update(controller:string,body:object,id:number) {
+    return this.http.put(this.url+controller+"/"+id,body).subscribe((res)=>
     console.log(res))
   }
 

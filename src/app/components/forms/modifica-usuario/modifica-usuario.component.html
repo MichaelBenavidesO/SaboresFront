@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Nombres" formControlName="nombres" [ngModel]=nombres>
+            <input matInput placeholder="Nombres" formControlName="nombres">
             <mat-error *ngIf="addressForm.controls['nombres'].hasError('required')">
               Los nombres son <strong>obligatorios.</strong>
             </mat-error>
@@ -26,7 +26,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Apellidos" formControlName="apellidos" [ngModel]=apellidos>
+            <input matInput placeholder="Apellidos" formControlName="apellidos">
             <mat-error *ngIf="addressForm.controls['apellidos'].hasError('required')">
               Los apellidos son <strong>obligatorios.</strong>
             </mat-error>
@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Identificacion" formControlName="identificacion" [ngModel]=identificacion>
+            <input matInput placeholder="Identificacion" formControlName="identificacion">
             <mat-error *ngIf="addressForm.controls['identificacion'].hasError('required')">
               La identificación es <strong>obligatoria.</strong>
             </mat-error>
@@ -44,7 +44,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="email" placeholder="Correo electronico" formControlName="email" [ngModel]=email>
+            <input matInput type="email" placeholder="Correo electronico" formControlName="email">
             <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
               El correo electronico es <strong>obligatorio.</strong>
             </mat-error>

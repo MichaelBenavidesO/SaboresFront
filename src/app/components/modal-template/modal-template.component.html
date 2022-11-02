@@ -11,11 +11,15 @@
 <div *ngIf="accion=='Registrar'">
 <app-register></app-register>
 </div>
-<div *ngIf="accion=='Agregar'">
+<div *ngIf="(accion=='Agregar' || accion=='Editar') && titulo=='producto'">
   <app-agrega-producto></app-agrega-producto>
 </div>
-<div *ngIf="accion=='Editar'">
-  <app-editar-producto></app-editar-producto>
+<div *ngIf="(accion=='Agregar' || accion=='Editar') && titulo=='pregunta'">
+  <app-realiza-pregunta></app-realiza-pregunta>
 </div>
+
+<!--<div *ngIf="accion=='Editar'">
+  <app-editar-producto></app-editar-producto>
+</div>-->
 
 </div>

@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { UsuarioLogin } from 'src/app/modelsView/UsuarioLoginMV.model';
 
 @Component({
   selector: 'app-menu',
@@ -18,8 +19,15 @@ export class MenuComponent {
       map(result => result.matches),
       shareReplay()
     );
-
-  constructor(private breakpointObserver: BreakpointObserver, public loginservice:LoginService,public router:Router) {}
+  user:UsuarioLogin;
+  nombre="";
+  constructor(private breakpointObserver: BreakpointObserver, public loginservice:LoginService,public router:Router) {
+    this.user= JSON.parse(localStorage.getItem("Usuario"))
+ 
+  }
+  ngOnInit(): void{
+   this.nombre=this.user.nombre;
+  }
 logout(){
   Swal.fire({
         icon: 'success',

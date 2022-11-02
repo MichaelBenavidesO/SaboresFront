@@ -62,6 +62,7 @@ user:UsuarioLogin;
       this.router.navigateByUrl('/ResumenRestaurante');
       this.loginservice.user.next(this.user);
       this.loginservice.login.next('login');
+      console.log(this.user);
     }
 
 
@@ -70,7 +71,7 @@ user:UsuarioLogin;
 
   modal() {
     this.modalservice.titulo="nuevo usuario",
-    this.modalservice.accion="Registrar",
+    this.modalservice.accion.next("Registrar"),
     this.dialog.open(ModalTemplateComponent,{
       width:'auto',
       height:'auto'

@@ -7,5 +7,6 @@ export interface UsuarioLogin
     nombre: string,
     apellido: string,
     rol: string,
+    olvidarContrasena:string,
     imagen: string
   }
