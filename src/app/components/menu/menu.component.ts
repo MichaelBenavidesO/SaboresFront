@@ -21,12 +21,20 @@ export class MenuComponent {
     );
   user:UsuarioLogin;
   nombre="";
+  apellido="";
+  nombreApellido="";
   constructor(private breakpointObserver: BreakpointObserver, public loginservice:LoginService,public router:Router) {
     this.user= JSON.parse(localStorage.getItem("Usuario"))
  
   }
   ngOnInit(): void{
    this.nombre=this.user.nombre;
+   this.apellido=this.user.apellido;
+   this.nombreApellido=this.nombre+" "+this.apellido;
+
+  }
+  avatar(){
+    this.router.navigateByUrl('/ModificaUsuario');
   }
 logout(){
   Swal.fire({

@@ -34,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditarProductoComponent } from './components/forms/editar-producto/editar-producto.component';
 import { MatSortModule } from '@angular/material/sort';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
+import { AvatarModule } from 'ngx-avatar';
 
 
 @NgModule({
@@ -76,6 +77,8 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
     ReactiveFormsModule,
     MatSortModule,
     MatFormFieldModule,
+    AvatarModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
