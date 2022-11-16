@@ -7,12 +7,13 @@ import { LoginService } from './services/login.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  Login:string='';
+  Login:string=''
+  Session:string=''
 
   ngOnInit(): void {
-
+    this.Session = sessionStorage.getItem('Session')
     console.log(this.loginservice.login);
-    if(this.loginservice.user!=null){
+    if(this.Session!=null){
     this.loginservice.login.next('login')
   }else{
     this.loginservice.login.next('logout')

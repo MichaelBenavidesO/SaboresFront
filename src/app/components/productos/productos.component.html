@@ -18,6 +18,10 @@
           <th mat-header-cell *matHeaderCellDef style="color:#af2c22;">{{disCol.toUpperCase()}}</th>
           <td mat-cell *matCellDef="let element">{{element[disCol]}}</td>
         </div>
+        <div *ngIf="disCol=='Imagen'">
+          <th mat-header-cell *matHeaderCellDef style="color:#af2c22;">{{disCol.toUpperCase()}}</th>
+          <td mat-cell *matCellDef="let element"><img src="../../../assets/imgs/{{element[disCol]}}" alt="Productos" width="250" height="259"></td>
+        </div>
         <div *ngIf="disCol=='Acciones'">
           <th mat-header-cell *matHeaderCellDef style="color:#af2c22;">{{disCol.toUpperCase()}}</th>
           <td mat-cell *matCellDef="let element">

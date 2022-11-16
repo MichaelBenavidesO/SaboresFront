@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UsuarioLogin } from 'src/app/modelsView/UsuarioLoginMV.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu',
@@ -23,14 +24,15 @@ export class MenuComponent {
   nombre="";
   apellido="";
   nombreApellido="";
-  constructor(private breakpointObserver: BreakpointObserver, public loginservice:LoginService,public router:Router) {
+  constructor(private breakpointObserver: BreakpointObserver, public loginservice:LoginService,public router:Router, public dialog:MatDialog) {
     this.user= JSON.parse(localStorage.getItem("Usuario"))
  
   }
   ngOnInit(): void{
-   this.nombre=this.user.nombre;
-   this.apellido=this.user.apellido;
-   this.nombreApellido=this.nombre+" "+this.apellido;
+   
+   this.nombre=this.user.nombre
+   this.apellido=this.user.apellido
+   this.nombreApellido=this.nombre+" "+this.apellido
 
   }
   avatar(){
@@ -43,6 +45,8 @@ logout(){
         text: 'Hasta luego'
 
   })
+  sessionStorage.removeItem('Rol');
+  sessionStorage.removeItem('Session');
   this.loginservice.user.next(null);
   this.loginservice.login.next('logout');
   this.router.navigateByUrl('/Ingreso');

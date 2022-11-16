@@ -4,12 +4,14 @@
 
 .shipping-card {
   min-width: 120px;
-  margin: 20px auto;
+  padding-top: 50px;
 }
 
-.mat-radio-button {
-  display: block;
-  margin: 5px 0;
+.mat-card-actions{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
 }
 
 .row {

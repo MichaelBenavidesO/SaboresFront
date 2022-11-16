@@ -31,10 +31,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalTemplateComponent } from './components/modal-template/modal-template.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { EditarProductoComponent } from './components/forms/editar-producto/editar-producto.component';
 import { MatSortModule } from '@angular/material/sort';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { AvatarModule } from 'ngx-avatar';
+import { MainComponent } from './components/main/main.component';
 
 
 @NgModule({
@@ -50,8 +50,8 @@ import { AvatarModule } from 'ngx-avatar';
     AgregaProductoComponent,
     ProductosComponent,
     ModalTemplateComponent,
-    EditarProductoComponent,
     PreguntasComponent,
+    MainComponent,
   ],
   imports: [
     MatFormFieldModule,

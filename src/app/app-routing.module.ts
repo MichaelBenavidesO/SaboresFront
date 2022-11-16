@@ -9,6 +9,7 @@ import { RealizaPreguntaComponent } from './components/forms/realiza-pregunta/re
 import { RealizaReservaComponent } from './components/realiza-reserva/realiza-reserva.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   {path:'Registro', component: RegisterComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'RegistroVenta', component: DashboardComponent},
   {path:'AgregaProducto', component: AgregaProductoComponent},
   {path:'ModificaProducto', component: ProductosComponent},
-
+  {path:'',component:DashboardComponent},
+  {path:'**',component:DashboardComponent},
 ];
 
 @NgModule({

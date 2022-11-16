@@ -18,13 +18,13 @@ export class LoginComponent {
   addressForm = this.fb.group({
     email: [null, Validators.required],
     password: [null, Validators.required],
-
   });
 em="";
 pass="";
 user:UsuarioLogin;
+hide = true;
 
-  constructor(
+constructor(
     public modalservice: ModalTemplateService,
     private fb: FormBuilder,
     public api: ApiService,
@@ -53,16 +53,34 @@ user:UsuarioLogin;
     if(this.em==this.user.correoElectronico && this.pass==this.user.contrasena){
 
       Swal.fire({
-        icon: 'success',
-        title: 'Hecho',
-        text: 'Logueo exitoso'
-
+        
+      
       })
+       Swal.fire({
+      icon: 'success',
+        title: 'Hecho',
+        text: 'Logueo exitoso',
+      showCancelButton: false,
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+      cancelButtonText: 'Cancelar'
+      }).then((result) => {   
+      if (result.isConfirmed) {     
+        
+        window.location.reload()
+      }
+    })
+
+
+
+      sessionStorage.setItem('Rol', this.user.rol);
+      sessionStorage.setItem('Session', this.user.idUsuario+this.user.nombre+this.user.apellido);
       localStorage.setItem("Usuario", JSON.stringify(this.user));
-      this.router.navigateByUrl('/ResumenRestaurante');
       this.loginservice.user.next(this.user);
       this.loginservice.login.next('login');
       console.log(this.user);
+      this.router.navigateByUrl('/ResumenRestaurante');
+     
     }
 
 
